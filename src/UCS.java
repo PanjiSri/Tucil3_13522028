@@ -26,17 +26,7 @@ public class UCS {
     }
 
     public static void main(String[] args) {
-        // UCS ucs = new UCS();
-        // ucs.printWordStartGoal();
 
-        // String exampleWord = "EAT"; // Contoh kata
-        // ArrayList<Pair<String, Integer>> result =
-        // ucs.generatePermutationsList(exampleWord);
-        // // Menampilkan hasil
-        // int i = 0;
-        // for (Pair<String, Integer> entry : result) {
-        // System.out.printf("%d. %s -> %d\n", ++i, entry.getKey(), entry.getValue());
-        // }
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter word start: ");
         String start = sc.nextLine().toUpperCase();
@@ -86,24 +76,23 @@ public class UCS {
             // System.out.println(temp);
 
             for (int i = 0; i < temp.size(); i++) {
-
-                StringIntegerPair newNode = new StringIntegerPair(
-                        temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(), cost + 1);
-
+     
                 List<String> FirstWordsList = new ArrayList<>();
                 for (StringIntegerPair element : nodeToExpan) {
                     String[] firstWords = element.getStringElement().split(" ");
                     FirstWordsList.add(firstWords[0]);
                 }
-
+                
                 if (!FirstWordsList.contains(temp.get(i))) {
+                    StringIntegerPair newNode = new StringIntegerPair(
+                            temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(), cost + 1);
                     insertInOrder(nodeExpantion, newNode);
                 }
 
             }
 
-            // System.out.println("SIMPUL HIDUP REAL: ");
-            // System.out.println(nodeExpantion);
+            System.out.println("SIMPUL HIDUP REAL: ");
+            System.out.println(nodeExpantion);
 
             StringIntegerPair min = nodeExpantion.remove(0);
 
@@ -112,8 +101,8 @@ public class UCS {
 
             nodeToExpan.add(min);
 
-            // System.out.println("SIMPUL DI EKSPAN: ");
-            // System.out.println(nodeToExpan);
+            System.out.println("SIMPUL DI EKSPAN: ");
+            System.out.println(nodeToExpan);
 
             currentWord = min.getStringElement().split(" ")[0];
 
