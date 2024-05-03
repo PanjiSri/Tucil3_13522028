@@ -30,5 +30,9 @@ public class StringIntegerPair {
     public String toString() {
         return "String: " + stringElement + ", Integer: " + integerElement;
     }
+
+    public void printStringIntegerPair() {
+        System.out.println(this.stringElement + " " + this.integerElement);
+    }
 }
 
