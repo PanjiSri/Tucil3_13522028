@@ -25,11 +25,11 @@ public class Main {
         do {
             // Input kata awal
             System.out.print("Ketikkan Kata Mulai: ");
-            start = scanner.nextLine().trim().toUpperCase();
+            start = scanner.nextLine().trim().toLowerCase();
 
             // Input kata tujuan
             System.out.print("Ketikkan Kata Tujuan: ");
-            goal = scanner.nextLine().trim().toUpperCase();
+            goal = scanner.nextLine().trim().toLowerCase();
 
             // Validasi panjang kata
             if (start.length() != goal.length()) {
@@ -44,7 +44,7 @@ public class Main {
             }
 
             // Validasi hanya huruf abjad
-            if (!start.matches("[A-Z]+") || !goal.matches("[A-Z]+")) {
+            if (!start.matches("[a-z]+") || !goal.matches("[a-z]+")) {
                 System.out.print("\n");
                 System.out.println("*");
                 System.out.println("**");
@@ -129,7 +129,7 @@ public class Main {
      private static List<String> loadDictionary() {
         List<String> dictionary = new ArrayList<>();
         try {
-            // Mendapatkan path dari direktori src
+            //absolute path src
             String srcDirPath = new File("src").getAbsolutePath();
 
             System.out.println(srcDirPath);
@@ -146,9 +146,10 @@ public class Main {
 
             Scanner fileScanner = new Scanner(new File(fullPath));
             while (fileScanner.hasNextLine()) {
-                dictionary.add(fileScanner.nextLine().trim().toUpperCase());
+                dictionary.add(fileScanner.nextLine().trim());
             }
             fileScanner.close();
+            
         } catch (FileNotFoundException e) {
             System.out.print("\n");
             System.out.println("*");

@@ -12,12 +12,12 @@ public class A_Star extends SearchAlgorithm {
         String currentWord = word_start;
 
         // Nodes to expand
-        ArrayList<StringIntegerPair> nodeToExpand = new ArrayList<>();
+        ArrayList<StringIntegerPair> nodeToExpan = new ArrayList<>();
 
         // Expanded nodes
         ArrayList<StringIntegerPair> nodeExpansion = new ArrayList<>();
 
-        nodeToExpand.add(new StringIntegerPair(currentWord, 0));
+        nodeToExpan.add(new StringIntegerPair(currentWord, 0));
 
         Worddiff wd = new Worddiff();
 
@@ -30,7 +30,7 @@ public class A_Star extends SearchAlgorithm {
                 List<String> firstWordsList = new ArrayList<>();
 
                 // kata kata simpul yang pernah diekspan
-                for (StringIntegerPair element : nodeToExpand) {
+                for (StringIntegerPair element : nodeToExpan) {
                     String[] firstWords = element.getStringElement().split(" ");
                     firstWordsList.add(firstWords[0]);
                 }
@@ -41,24 +41,40 @@ public class A_Star extends SearchAlgorithm {
                     int heuristic = countLetterDifference(temp.get(i), word_goal);
 
                     StringIntegerPair newNode = new StringIntegerPair(
-                            temp.get(i) + " " + nodeToExpand.get(nodeToExpand.size() - 1).getStringElement(),
+                            temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(),
                             heuristic + cost);
                     insertInOrder(nodeExpansion, newNode);
                 }
             }
 
+            if (nodeExpansion.size() == 0) {
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Tidak ada solusi menurut kamus words_alpha.txt");
+                System.out.println("**");
+                System.out.println("*");
+                System.exit(0);
+                break;
+            }
+
             StringIntegerPair min = nodeExpansion.remove(0);
-            nodeToExpand.add(min);
+            nodeToExpan.add(min);
 
             currentWord = min.getStringElement().split(" ")[0];
             cost++;
         }
 
-        String path = nodeToExpand.get(nodeToExpand.size() - 1).getStringElement();
+        //buat ngeprint hasilnya
+        String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
 
+        System.out.print("\n");
+        System.out.println("Solusi: ");
+        System.out.println("==========");
         for (int i = path.split(" ").length - 1; i >= 0; i--) {
             System.out.println(path.split(" ")[i]);
         }
+        System.out.println("==========");
     }
 
     public void insertInOrder(ArrayList<StringIntegerPair> list, StringIntegerPair newItem) {

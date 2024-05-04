@@ -43,6 +43,17 @@ public class UCS extends SearchAlgorithm {
                 }
             }
 
+            if (nodeExpansion.size() == 0) {
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Tidak ada solusi menurut kamus words_alpha.txt");
+                System.out.println("**");
+                System.out.println("*");
+                System.exit(0);
+                break;
+            }
+
             StringIntegerPair min = nodeExpansion.remove(0);
             nodeToExpan.add(min);
 
@@ -51,11 +62,15 @@ public class UCS extends SearchAlgorithm {
         }
 
         //buat ngeprint hasilnya
-        String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
+         String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
 
-        for (int i = path.split(" ").length - 1; i >= 0; i--) {
-            System.out.println(path.split(" ")[i]);
-        }
+         System.out.print("\n");
+         System.out.println("Solusi: ");
+         System.out.println("==========");
+         for (int i = path.split(" ").length - 1; i >= 0; i--) {
+             System.out.println(path.split(" ")[i]);
+         }
+         System.out.println("==========");
     }
 
     public void insertInOrder(ArrayList<StringIntegerPair> list, StringIntegerPair newItem) {

@@ -15,6 +15,7 @@ public class Worddiff {
     }
 
     private boolean isOneLetterDifferent(String word1, String word2) {
+
         if (word1.length() != word2.length()) {
             return false;
         }

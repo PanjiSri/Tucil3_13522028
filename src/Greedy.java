@@ -8,16 +8,16 @@ public class Greedy extends SearchAlgorithm {
     }
 
     public void algorithm() {
-        // Greedy Best First Search
+        // // Greedy Best First Search
         String currentWord = word_start;
 
-        // Simpul buat di ekspan
-        ArrayList<StringIntegerPair> nodeToExpand = new ArrayList<>();
+        // // Simpul buat di ekspan
+        ArrayList<StringIntegerPair> nodeToExpan = new ArrayList<>();
 
-        // Simpul Simpul ekspansi
+        // // Simpul Simpul ekspansi
         ArrayList<StringIntegerPair> nodeExpansion = new ArrayList<>();
 
-        nodeToExpand.add(new StringIntegerPair(currentWord, 0));
+        nodeToExpan.add(new StringIntegerPair(currentWord, 0));
 
         Worddiff wd = new Worddiff();
 
@@ -26,11 +26,12 @@ public class Greedy extends SearchAlgorithm {
         while (!currentWord.equals(word_goal)) {
             ArrayList<String> temp = wd.findWordDiff(currentWord, dictionary);
 
+
             for (int i = 0; i < temp.size(); i++) {
                 List<String> firstWordsList = new ArrayList<>();
 
                 // kata kata simpul yang pernah diekspan
-                for (StringIntegerPair element : nodeToExpand) {
+                for (StringIntegerPair element : nodeToExpan) {
                     String[] firstWords = element.getStringElement().split(" ");
                     firstWordsList.add(firstWords[0]);
                 }
@@ -41,23 +42,38 @@ public class Greedy extends SearchAlgorithm {
                     heuristic = countLetterDifference(temp.get(i), word_goal);
 
                     StringIntegerPair newNode = new StringIntegerPair(
-                            temp.get(i) + " " + nodeToExpand.get(nodeToExpand.size() - 1).getStringElement(), heuristic);
+                            temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(), heuristic);
                     insertInOrder(nodeExpansion, newNode);
                 }
             }
 
+            if (nodeExpansion.size() == 0) {
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Tidak ada solusi menurut kamus words_alpha.txt");
+                System.out.println("**");
+                System.out.println("*");
+                System.exit(0);
+                break;
+            }
+
             StringIntegerPair min = nodeExpansion.remove(0);
-            nodeToExpand.add(min);
+            nodeToExpan.add(min);
 
             currentWord = min.getStringElement().split(" ")[0];
         }
 
         //buat ngeprint hasilnya
-        String path = nodeToExpand.get(nodeToExpand.size() - 1).getStringElement();
+        String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
 
+        System.out.print("\n");
+        System.out.println("Solusi: ");
+        System.out.println("==========");
         for (int i = path.split(" ").length - 1; i >= 0; i--) {
             System.out.println(path.split(" ")[i]);
         }
+        System.out.println("==========");
     }
 
 
