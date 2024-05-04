@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class A_Star extends SearchAlgorithm {
 
-    public A_Star(String word_start, String word_goal) {
-        super(word_start, word_goal);
+    public A_Star(String word_start, String word_goal, List<String> dictionary) {
+        super(word_start, word_goal, dictionary);
     }
 
     public void algorithm() {
@@ -25,7 +24,7 @@ public class A_Star extends SearchAlgorithm {
         int cost = 0;
 
         while (!currentWord.equals(word_goal)) {
-            ArrayList<String> temp = wd.findWordDiff(currentWord);
+            ArrayList<String> temp = wd.findWordDiff(currentWord, dictionary);
 
             for (int i = 0; i < temp.size(); i++) {
                 List<String> firstWordsList = new ArrayList<>();
@@ -70,7 +69,7 @@ public class A_Star extends SearchAlgorithm {
         }
         list.add(index, newItem);
     }
-    
+
     public int countLetterDifference(String word1, String word2) {
         int difference = 0;
         for (int i = 0; i < word1.length(); i++) {
@@ -79,19 +78,5 @@ public class A_Star extends SearchAlgorithm {
             }
         }
         return difference;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter word start: ");
-        String start = sc.nextLine().toUpperCase();
-        System.out.print("Enter word goal: ");
-        String goal = sc.nextLine().toUpperCase();
-        sc.close();
-
-        A_Star aStar = new A_Star(start, goal);
-        aStar.printWordStartGoal();
-        System.out.println("Testing algorithm");
-        aStar.algorithm();
     }
 }

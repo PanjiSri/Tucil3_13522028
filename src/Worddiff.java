@@ -1,47 +1,27 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class Worddiff {
-    // public static void main(String[] args) {
+    public ArrayList<String> findWordDiff(String word, List<String> dictionary) {
+        ArrayList<String> result = new ArrayList<>();
 
-    //     ArrayList<String> result = findWordDiff("Fire");
-
-    //     System.out.println("Kata-kata dengan perbedaan satu huruf dari input: ");
-    //     for (String word : result) {
-    //         System.out.println(word);
-    //     }
-    // }
-
-    public ArrayList<String> findWordDiff(String kata) {
-        ArrayList<String> hasil = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("words_alpha.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-
-                if (isDiffOneLetter(kata, line.trim())) {
-                    hasil.add(line.trim());
-                }
+        for (String entry : dictionary) {
+            if (isOneLetterDifferent(word, entry)) {
+                result.add(entry);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        return hasil;
+        return result;
     }
 
-    // Method untuk memeriksa apakah dua kata memiliki perbedaan satu huruf
-    private boolean isDiffOneLetter(String kata1, String kata2) {
-        if (kata1.length() != kata2.length()) {
+    private boolean isOneLetterDifferent(String word1, String word2) {
+        if (word1.length() != word2.length()) {
             return false;
         }
 
         int diffCount = 0;
-        for (int i = 0; i < kata1.length(); i++) {
-            if (kata1.charAt(i) != kata2.charAt(i)) {
+        for (int i = 0; i < word1.length(); i++) {
+            if (word1.charAt(i) != word2.charAt(i)) {
                 diffCount++;
             }
             if (diffCount > 1) {

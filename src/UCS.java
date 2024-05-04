@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UCS extends SearchAlgorithm {
 
-    public UCS(String word_start, String word_goal) {
-        super(word_start, word_goal);
+    public UCS(String word_start, String word_goal, List<String> dictionary) {
+        super(word_start, word_goal, dictionary);
     }
 
     public void algorithm() {
@@ -25,7 +24,7 @@ public class UCS extends SearchAlgorithm {
         int cost = 0;
 
         while (!currentWord.equals(word_goal)) {
-            ArrayList<String> temp = wd.findWordDiff(currentWord);
+            ArrayList<String> temp = wd.findWordDiff(currentWord, dictionary);
 
             for (int i = 0; i < temp.size(); i++) {
                 List<String> firstWordsList = new ArrayList<>();
@@ -71,19 +70,5 @@ public class UCS extends SearchAlgorithm {
     //UCS gak perlu method ini sebenernya
     public int countLetterDifference(String word1, String word2) {
         return 0;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter word start: ");
-        String start = sc.nextLine().toUpperCase();
-        System.out.print("Enter word goal: ");
-        String goal = sc.nextLine().toUpperCase();
-        sc.close();
-
-        UCS ucs = new UCS(start, goal);
-        ucs.printWordStartGoal();
-        System.out.println("Testing algorithm");
-        ucs.algorithm();
     }
 }

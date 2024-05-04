@@ -101,13 +101,13 @@ public class Main {
 
         switch (choice) {
             case 1:
-                searchAlgorithm = new UCS(start, goal);
+                searchAlgorithm = new UCS(start, goal, dictionary);
                 break;
             case 2:
-                searchAlgorithm = new A_Star(start, goal);
+                searchAlgorithm = new A_Star(start, goal, dictionary);
                 break;
             case 3:
-                searchAlgorithm = new Greedy(start, goal);
+                searchAlgorithm = new Greedy(start, goal, dictionary);
                 break;
             default:
                 System.out.println("Ada Masalah Pada Pilihan");
