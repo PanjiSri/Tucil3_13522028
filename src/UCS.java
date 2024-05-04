@@ -77,6 +77,7 @@ public class UCS extends SearchAlgorithm {
          }
          System.out.println("==========\n");
 
+         System.out.println("Banyak node yang dikunjungi: " + nodeToExpan.size());
          System.out.println("Waktu (ms): " + elapsedTime);
     }
 
