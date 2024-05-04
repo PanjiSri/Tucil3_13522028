@@ -33,19 +33,37 @@ public class Main {
 
             // Validasi panjang kata
             if (start.length() != goal.length()) {
-                System.out.println("Kata awal dan kata tujuan harus memiliki panjang yang sama.");
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Peringatan : Kata awal dan kata tujuan harus memiliki panjang yang sama.");
+                System.out.println("**");
+                System.out.println("*");
+                System.out.print("\n");
                 continue;
             }
 
             // Validasi hanya huruf abjad
             if (!start.matches("[A-Z]+") || !goal.matches("[A-Z]+")) {
-                System.out.println("Kata hanya boleh terdiri dari huruf abjad.");
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Peringatan : Kata hanya boleh terdiri dari huruf abjad.");
+                System.out.println("**");
+                System.out.println("*");
+                System.out.print("\n");
                 continue;
             }
 
             // Validasi kata ada di dalam dictionary
             if (!dictionary.contains(start) || !dictionary.contains(goal)) {
-                System.out.println("Kata tidak ditemukan di kamus.");
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
+                System.out.println("Peringatan : Salah satu atau kedua kata masukkan tidak ditemukan di kamus.");
+                System.out.println("**");
+                System.out.println("*");
+                System.out.print("\n");
                 continue;
             }
 
@@ -65,7 +83,13 @@ public class Main {
             scanner.nextLine(); 
                 
             if (!(choice == 1 || choice == 2 || choice == 3)) {
+                System.out.print("\n");
+                System.out.println("*");
+                System.out.println("**");
                 System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                System.out.println("**");
+                System.out.println("*");
+                System.out.print("\n");
                 continue;
             }
 
@@ -102,17 +126,41 @@ public class Main {
     }
 
     // Method untuk kata-kata dari file words_alpha.txt ke dalam ArrayList
-    private static List<String> loadDictionary() {
+     private static List<String> loadDictionary() {
         List<String> dictionary = new ArrayList<>();
         try {
-            Scanner fileScanner = new Scanner(new File(WORDS_FILE_PATH));
+            // Mendapatkan path dari direktori src
+            String srcDirPath = new File("src").getAbsolutePath();
+
+            System.out.println(srcDirPath);
+            // Mengecek apakah sistem operasi yang digunakan adalah Windows
+            boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
+
+            //Asumsi
+            // Jika di Windows, maka gunakan pemisah jalur file "\\".
+            // Jika di Linux atau WSL, gunakan pemisah jalur file "/".
+            String fileSeparator = isWindows ? "\\" : "/";
+
+            // Menggabungkan path src dengan nama file menggunakan pemisah yang tepat
+            String fullPath = srcDirPath + fileSeparator + WORDS_FILE_PATH;
+
+            Scanner fileScanner = new Scanner(new File(fullPath));
             while (fileScanner.hasNextLine()) {
                 dictionary.add(fileScanner.nextLine().trim().toUpperCase());
             }
             fileScanner.close();
         } catch (FileNotFoundException e) {
+            System.out.print("\n");
+            System.out.println("*");
+            System.out.println("**");
             System.out.println("File words_alpha.txt tidak ditemukan.");
+            System.out.println("Tolong file words_alpha.txt nya jangan di hapus atau dipindahin ya kakak asisten yang terhormat.");
+            System.out.println("Terimakasih :)");
+            System.out.println("**");
+            System.out.println("*");
+            System.out.print("\n");
             e.printStackTrace();
+            System.exit(0);
         }
         return dictionary;
     }
