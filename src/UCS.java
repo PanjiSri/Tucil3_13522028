@@ -60,7 +60,7 @@ public class UCS extends SearchAlgorithm {
             nodeToExpan.add(min);
 
             currentWord = min.getStringElement().split(" ")[0];
-            cost++;
+            cost = min.getIntegerElement() + 1;
         }
 
         long stopTime = System.currentTimeMillis();

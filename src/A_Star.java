@@ -66,9 +66,9 @@ public class A_Star extends SearchAlgorithm {
 
             currentWord = min.getStringElement().split(" ")[0];
 
-            System.out.println(currentWord);
+            // System.out.println(currentWord);
 
-            cost++;
+            cost = min.getIntegerElement() + 1;
         }
 
         
