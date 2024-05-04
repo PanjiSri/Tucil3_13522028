@@ -8,6 +8,8 @@ public class UCS extends SearchAlgorithm {
     }
 
     public void algorithm() {
+        long startTime = System.currentTimeMillis(); 
+
         // Uniform Cost Search
         String currentWord = word_start;
 
@@ -61,6 +63,9 @@ public class UCS extends SearchAlgorithm {
             cost++;
         }
 
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+
         //buat ngeprint hasilnya
          String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
 
@@ -70,7 +75,9 @@ public class UCS extends SearchAlgorithm {
          for (int i = path.split(" ").length - 1; i >= 0; i--) {
              System.out.println(path.split(" ")[i].toUpperCase());
          }
-         System.out.println("==========");
+         System.out.println("==========\n");
+
+         System.out.println("Waktu (ms): " + elapsedTime);
     }
 
     public void insertInOrder(ArrayList<StringIntegerPair> list, StringIntegerPair newItem) {
