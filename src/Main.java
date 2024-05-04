@@ -132,7 +132,7 @@ public class Main {
             //absolute path src
             String srcDirPath = new File("src").getAbsolutePath();
 
-            System.out.println(srcDirPath);
+            // System.out.println(srcDirPath);
             // Mengecek apakah sistem operasi yang digunakan adalah Windows
             boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 

@@ -72,7 +72,7 @@ public class A_Star extends SearchAlgorithm {
         System.out.println("Solusi: ");
         System.out.println("==========");
         for (int i = path.split(" ").length - 1; i >= 0; i--) {
-            System.out.println(path.split(" ")[i]);
+            System.out.println(path.split(" ")[i].toUpperCase());
         }
         System.out.println("==========");
     }
