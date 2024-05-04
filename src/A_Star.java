@@ -44,7 +44,7 @@ public class A_Star extends SearchAlgorithm {
 
                     StringIntegerPair newNode = new StringIntegerPair(
                             temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(),
-                            heuristic + cost);
+                            heuristic + cost+1);
                     insertInOrder(nodeExpansion, newNode);
                 }
             }
@@ -68,7 +68,7 @@ public class A_Star extends SearchAlgorithm {
 
             // System.out.println(currentWord);
 
-            cost = min.getIntegerElement() + 1;
+            cost = min.getIntegerElement();
         }
 
         
