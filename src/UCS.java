@@ -49,7 +49,7 @@ public class UCS extends SearchAlgorithm {
                 System.out.print("\n");
                 System.out.println("*");
                 System.out.println("**");
-                System.out.println("Tidak ada solusi menurut kamus words_alpha.txt");
+                System.out.println("Tidak ada solusi sesuai referensi kamus dictionary.txt milik oracle");
                 System.out.println("**");
                 System.out.println("*");
                 System.exit(0);

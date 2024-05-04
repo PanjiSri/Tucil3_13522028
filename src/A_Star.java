@@ -53,7 +53,7 @@ public class A_Star extends SearchAlgorithm {
                 System.out.print("\n");
                 System.out.println("*");
                 System.out.println("**");
-                System.out.println("Tidak ada solusi menurut kamus words_alpha.txt");
+                System.out.println("Tidak ada solusi sesuai referensi kamus dictionary.txt milik oracle");
                 System.out.println("**");
                 System.out.println("*");
                 System.exit(0);
@@ -63,7 +63,11 @@ public class A_Star extends SearchAlgorithm {
             StringIntegerPair min = nodeExpansion.remove(0);
             nodeToExpan.add(min);
 
+
             currentWord = min.getStringElement().split(" ")[0];
+
+            System.out.println(currentWord);
+
             cost++;
         }
 
