@@ -137,8 +137,8 @@ public class Main {
             boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 
             //Asumsi
-            // Jika di Windows, maka gunakan pemisah jalur file "\\".
-            // Jika di Linux atau WSL, gunakan pemisah jalur file "/".
+            // Jika di Windows, maka pemisah jalur file "\\".
+            // Jika di Linux atau WSL, maka pemisah jalur file "/".
             String fileSeparator = isWindows ? "\\" : "/";
 
             // Menggabungkan path src dengan nama file menggunakan pemisah yang tepat
