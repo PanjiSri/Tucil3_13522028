@@ -2,27 +2,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UCS extends SearchAlgorithm {
+public class Greedy extends SearchAlgorithm {
 
-    public UCS(String word_start, String word_goal) {
+    public Greedy(String word_start, String word_goal) {
         super(word_start, word_goal);
     }
 
     public void algorithm() {
-        // Uniform Cost Search
+        // Greedy Best First Search
         String currentWord = word_start;
 
         // Simpul buat di ekspan
-        ArrayList<StringIntegerPair> nodeToExpan = new ArrayList<>();
+        ArrayList<StringIntegerPair> nodeToExpand = new ArrayList<>();
 
         // Simpul Simpul ekspansi
         ArrayList<StringIntegerPair> nodeExpansion = new ArrayList<>();
 
-        nodeToExpan.add(new StringIntegerPair(currentWord, 0));
+        nodeToExpand.add(new StringIntegerPair(currentWord, 0));
 
         Worddiff wd = new Worddiff();
 
-        int cost = 0;
+        int heuristic = 0;
 
         while (!currentWord.equals(word_goal)) {
             ArrayList<String> temp = wd.findWordDiff(currentWord);
@@ -31,33 +31,36 @@ public class UCS extends SearchAlgorithm {
                 List<String> firstWordsList = new ArrayList<>();
 
                 // kata kata simpul yang pernah diekspan
-                for (StringIntegerPair element : nodeToExpan) {
+                for (StringIntegerPair element : nodeToExpand) {
                     String[] firstWords = element.getStringElement().split(" ");
                     firstWordsList.add(firstWords[0]);
                 }
 
                 // kalau belum pernah di ekspan baru boleh jadi calon untuk di ekspan
                 if (!firstWordsList.contains(temp.get(i))) {
+                    //ini nilai heuristic nya, yaitu kata ini sama goal itu beda berapa huruf
+                    heuristic = countLetterDifference(temp.get(i), word_goal);
+
                     StringIntegerPair newNode = new StringIntegerPair(
-                            temp.get(i) + " " + nodeToExpan.get(nodeToExpan.size() - 1).getStringElement(), cost + 1);
+                            temp.get(i) + " " + nodeToExpand.get(nodeToExpand.size() - 1).getStringElement(), heuristic);
                     insertInOrder(nodeExpansion, newNode);
                 }
             }
 
             StringIntegerPair min = nodeExpansion.remove(0);
-            nodeToExpan.add(min);
+            nodeToExpand.add(min);
 
             currentWord = min.getStringElement().split(" ")[0];
-            cost++;
         }
 
         //buat ngeprint hasilnya
-        String path = nodeToExpan.get(nodeToExpan.size() - 1).getStringElement();
+        String path = nodeToExpand.get(nodeToExpand.size() - 1).getStringElement();
 
         for (int i = path.split(" ").length - 1; i >= 0; i--) {
             System.out.println(path.split(" ")[i]);
         }
     }
+
 
     public void insertInOrder(ArrayList<StringIntegerPair> list, StringIntegerPair newItem) {
         int index = 0;
@@ -68,9 +71,14 @@ public class UCS extends SearchAlgorithm {
         list.add(index, newItem);
     }
 
-    //UCS gak perlu method ini sebenernya
     public int countLetterDifference(String word1, String word2) {
-        return 0;
+        int difference = 0;
+        for (int i = 0; i < word1.length(); i++) {
+            if (word1.charAt(i) != word2.charAt(i)) {
+                difference++;
+            }
+        }
+        return difference;
     }
 
     public static void main(String[] args) {
@@ -81,9 +89,9 @@ public class UCS extends SearchAlgorithm {
         String goal = sc.nextLine().toUpperCase();
         sc.close();
 
-        UCS ucs = new UCS(start, goal);
-        ucs.printWordStartGoal();
+        Greedy greedy = new Greedy(start, goal);
+        greedy.printWordStartGoal();
         System.out.println("Testing algorithm");
-        ucs.algorithm();
+        greedy.algorithm();
     }
 }
