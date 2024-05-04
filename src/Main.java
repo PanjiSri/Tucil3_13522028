@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final String WORDS_FILE_PATH = "words_alpha.txt";
+    private static final String WORDS_FILE_PATH = "dictionary.txt";
 
     public static void main(String[] args) {
 
