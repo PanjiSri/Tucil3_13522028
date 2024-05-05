@@ -26,11 +26,6 @@ public class StringIntegerPair {
         this.integerElement = integerElement;
     }
 
-    @Override
-    public String toString() {
-        return "String: " + stringElement + ", Integer: " + integerElement;
-    }
-
     public void printStringIntegerPair() {
         System.out.println(this.stringElement + " " + this.integerElement);
     }
