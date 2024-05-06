@@ -65,14 +65,14 @@ Berikut adalah versi java minimal yang disarankan :
 ## Cara mengkompilasi dan menjalankan program
 
 1. Clone repository ini
-```
-    git clone https://github.com/PanjiSri/Tucil3_13522028.git
-```
+        ```
+            git clone https://github.com/PanjiSri/Tucil3_13522028.git
+        ```
 2. Masuk ke folder path yang setara dengan Makefile dan run.bat
 
-```
-    cd Tucil3_13522028
-```
+        ```
+            cd Tucil3_13522028
+        ```
 3. Jalankan program
 
     - Apabila anda menggunakan Windows gunakanlah run.bat untuk menjalankan program
