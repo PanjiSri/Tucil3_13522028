@@ -61,18 +61,17 @@ Berikut adalah versi java minimal yang disarankan :
     - OpenJDK 64-Bit Server VM (build 21.0.2+13-Ubuntu-122.04.1, mixed mode, sharing)
 
 
-
 ## Cara mengkompilasi dan menjalankan program
 
 1. Clone repository ini
-        ```
-            git clone https://github.com/PanjiSri/Tucil3_13522028.git
-        ```
+```
+    git clone https://github.com/PanjiSri/Tucil3_13522028.git
+```
 2. Masuk ke folder path yang setara dengan Makefile dan run.bat
 
-        ```
-            cd Tucil3_13522028
-        ```
+```
+    cd Tucil3_13522028
+```
 3. Jalankan program
 
     - Apabila anda menggunakan Windows gunakanlah run.bat untuk menjalankan program
@@ -106,4 +105,5 @@ Berikut adalah versi java minimal yang disarankan :
     - Pastikan kembali inputan sudah sesuai petunjuk yang diberikan.
     - Coba untuk menggunakan versi java yang disarankan
     - Pastikan sudah memiliki ekstensi Makefile Tools
+
 
