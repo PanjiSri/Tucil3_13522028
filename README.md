@@ -96,7 +96,7 @@ Berikut adalah versi java minimal yang disarankan :
     - Pada bagian ini ketikkan kata tujuan yang anda inginkan
 
         ```
-        Ketikkan Kata Mulai: 
+        Ketikkan Kata Tujuan:  
         ```
 
 
