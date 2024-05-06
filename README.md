@@ -24,7 +24,7 @@ Program **java** berbasis **CLI (Command Line Interface)** pada repository ini d
 │   ├── UCS.class
 │   └── Worddiff.class
 ├── doc/
-│   └── Tucil3_K02_13522028.pdf
+│   └── Tucil3_13522028.pdf
 ├── src/
 │   ├── A_Star.java
 │   ├── Greedy.java
