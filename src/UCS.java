@@ -60,6 +60,9 @@ public class UCS extends SearchAlgorithm {
             nodeToExpan.add(min);
 
             currentWord = min.getStringElement().split(" ")[0];
+
+            // System.out.println(currentWord);
+
             cost = min.getIntegerElement();
         }
 
