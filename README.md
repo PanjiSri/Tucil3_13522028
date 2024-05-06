@@ -103,7 +103,7 @@ Berikut adalah versi java minimal yang disarankan :
 
 5. Program sudah diuji coba dan dapat berjalan. Jika ada error berikut adalah hal-hal yang bisa dilakukan : 
 
-    - Castikan kembali inputan sudah sesuai petunjuk yang diberikan.
+    - Pastikan kembali inputan sudah sesuai petunjuk yang diberikan.
     - Coba untuk menggunakan versi java yang disarankan
     - Pastikan sudah memiliki ekstensi Makefile Tools
 
