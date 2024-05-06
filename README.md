@@ -47,7 +47,7 @@ Program **java** berbasis **CLI (Command Line Interface)** pada repository ini d
 
 ## Requirements
 
-Berikut adalah versi java minimal yang harus disarankan :
+Berikut adalah versi java minimal yang disarankan :
 
 - Windows
 
